@@ -17,5 +17,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/function-component-definition': 'off',
     'arrow-body-style': 'off',
+    'jsx-quotes': 'single',
   },
 };

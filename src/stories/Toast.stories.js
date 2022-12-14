@@ -5,4 +5,6 @@ import { Toast } from 'components/Toast';
 
 const stories = storiesOf('App test', module);
 
-stories.add('App', () => <Toast />);
+stories.add('App', () => (
+  <Toast color='yellow' message='test icon' type='information' />
+));
