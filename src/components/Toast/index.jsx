@@ -9,18 +9,19 @@ import { colors } from 'constants';
 import { CloseIcon } from 'components/CloseIcon';
 import { ToastIcon } from 'components/ToastIcon';
 import { ToastItem } from 'components/ToastItem';
+import { number, object, string } from 'prop-types';
 
 export const Toast = ({
   type = 'warning',
   heading = '',
-  message,
-  duration,
   color,
+  message,
   closeIconColor = 'black',
-  position = { top: 0, left: 0 },
-  spaces = { y: 30, x: 30 },
+  duration = 3,
   inAnimation,
   outAnimation,
+  position = { top: 0, left: 0 },
+  spaces = { y: 30, x: 30 },
 }) => {
   const toastColor = colors[color];
 
@@ -36,4 +37,17 @@ export const Toast = ({
       <CloseIcon closeIcon={closeIconColor} />
     </StyledToastItemContainer>
   );
+};
+
+Toast.propTypes = {
+  type: string.optional,
+  heading: string.isRequired,
+  color: string.isRequired,
+  message: string.optional,
+  closeIconColor: string.optional,
+  duration: number.optional,
+  inAnimation: string.optional,
+  outAnimation: string.optional,
+  position: object.optional,
+  spaces: object.optional,
 };
