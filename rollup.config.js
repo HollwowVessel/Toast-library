@@ -32,6 +32,7 @@ export default [
         constants: `${__dirname}/src/constants`,
         assets: `${__dirname}/src/assets`,
         helpers: `${__dirname}/src/helpers`,
+        containers: `${__dirname}/src/containers`,
       }),
     ],
   },

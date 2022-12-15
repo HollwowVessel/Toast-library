@@ -1,33 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../index.css';
 import {
   StyledToastDescription,
   StyledToastInfo,
   StyledToastItemContainer,
 } from './styled';
-import { colors } from 'constants';
+import { oneOf } from 'prop-types';
+import { positionMap, spacesMap } from 'constants';
 import { CloseIcon } from 'components/CloseIcon';
 import { ToastIcon } from 'components/ToastIcon';
-import { ToastItem } from 'components/ToastItem';
+
 import { number, object, string } from 'prop-types';
 
-export const Toast = ({
+const Toast = ({
   type = 'warning',
   heading = '',
-  color,
-  message,
+  message = 'test',
   closeIconColor = 'black',
   duration = 3,
-  inAnimation,
-  outAnimation,
-  position = { top: 0, left: 0 },
-  spaces = { y: 30, x: 30 },
+  spaces = 'm',
 }) => {
-  const toastColor = colors[color];
-
   return (
-    <StyledToastItemContainer color={toastColor} position={position}>
-      <StyledToastInfo spaces={spaces}>
+    <>
+      <StyledToastInfo spaces={spacesMap.get(spaces)}>
         <ToastIcon toastIcon={type} />
         <StyledToastDescription>
           <h1>{heading}</h1>
@@ -35,19 +30,21 @@ export const Toast = ({
         </StyledToastDescription>
       </StyledToastInfo>
       <CloseIcon closeIcon={closeIconColor} />
-    </StyledToastItemContainer>
+    </>
   );
 };
 
 Toast.propTypes = {
-  type: string.optional,
-  heading: string.isRequired,
-  color: string.isRequired,
-  message: string.optional,
-  closeIconColor: string.optional,
-  duration: number.optional,
-  inAnimation: string.optional,
-  outAnimation: string.optional,
-  position: object.optional,
-  spaces: object.optional,
+  type: oneOf(['warning', 'information', 'error', 'success']),
+  heading: string,
+  color: oneOf(['purple', 'red', 'green', 'yellow']),
+  message: string,
+  closeIconColor: oneOf(['white', 'black']),
+  duration: number,
+  inAnimation: string,
+  outAnimation: string,
+  position: oneOf(['topRight', 'topLeft', 'bottomRight', 'bottomLeft']),
+  spaces: oneOf(['none', 's', 'm', 'l']),
 };
+
+export { Toast };

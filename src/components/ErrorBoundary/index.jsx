@@ -1,13 +1,13 @@
-import React, { Children, Component } from 'react';
+import React, { Component } from 'react';
 
-export default class ErrorBoundary extends Component {
-  constructor(prop) {
-    super(prop);
+export class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
     this.state = { hasError: false };
   }
 
   static getDerivedStateFromError() {
-    this.setState({ hasError: true });
+    return { hasError: true };
   }
 
   render() {
@@ -15,6 +15,6 @@ export default class ErrorBoundary extends Component {
       console.log('Something went wrong');
       return null;
     }
-    return <>{prop.children}</>;
+    return this.props.children;
   }
 }
