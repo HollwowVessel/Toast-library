@@ -1,50 +1,47 @@
-import React, { useState } from 'react';
-import '../../index.css';
-import {
-  StyledToastDescription,
-  StyledToastInfo,
-  StyledToastItemContainer,
-} from './styled';
-import { oneOf } from 'prop-types';
-import { positionMap, spacesMap } from 'constants';
+import React, { memo, useState } from 'react';
+
+import { useToastAnimation } from 'hooks';
+
 import { CloseIcon } from 'components/CloseIcon';
 import { ToastIcon } from 'components/ToastIcon';
 
-import { number, object, string } from 'prop-types';
+import { ToastDescription, ToastInfo } from './styled';
 
-const Toast = ({
+export const Toast = ({
   type = 'warning',
-  heading = '',
-  message = 'test',
-  closeIconColor = 'black',
-  duration = 3,
-  spaces = 'm',
+  color = 'yellow',
+  heading = 'basic heading',
+  message = 'Lorem ipsum...',
+  duration = 3000,
+  inAnimationName = 'appearance',
+  outAnimationName = 'left-slide-in',
+  closeIconColor = 'white',
+  animationTime = 1000,
+  destroy,
+  spaces,
 }) => {
+  const { animation, deleteWithAnimation } = useToastAnimation({
+    inAnimationName,
+    outAnimationName,
+    animationTime,
+    destroy,
+    duration,
+  });
+
   return (
-    <>
-      <StyledToastInfo spaces={spacesMap.get(spaces)}>
-        <ToastIcon toastIcon={type} />
-        <StyledToastDescription>
-          <h1>{heading}</h1>
-          <p>{message}</p>
-        </StyledToastDescription>
-      </StyledToastInfo>
-      <CloseIcon closeIcon={closeIconColor} />
-    </>
+    <ToastInfo
+      background={color}
+      type={type}
+      animationName={animation}
+      animationTime={animationTime}
+      spaces={spaces}
+    >
+      <ToastIcon type={type} />
+      <ToastDescription position={message ? 'normal' : 'center'}>
+        <h1 type={type}>{heading}</h1>
+        {message && <p type={type}>{message}</p>}
+      </ToastDescription>
+      <CloseIcon type={closeIconColor} destroy={deleteWithAnimation} />
+    </ToastInfo>
   );
 };
-
-Toast.propTypes = {
-  type: oneOf(['warning', 'information', 'error', 'success']),
-  heading: string,
-  color: oneOf(['purple', 'red', 'green', 'yellow']),
-  message: string,
-  closeIconColor: oneOf(['white', 'black']),
-  duration: number,
-  inAnimation: string,
-  outAnimation: string,
-  position: oneOf(['topRight', 'topLeft', 'bottomRight', 'bottomLeft']),
-  spaces: oneOf(['none', 's', 'm', 'l']),
-};
-
-export { Toast };

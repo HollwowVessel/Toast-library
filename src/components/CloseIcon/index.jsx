@@ -1,13 +1,13 @@
 import React from 'react';
 import { closeIconsMap } from 'constants';
 
-import { StyledToastCloseIcon } from './styled';
+import { ToastCloseIcon } from './styled';
 import { oneOf } from 'prop-types';
 
-export const CloseIcon = ({ closeIcon }) => {
-  return <StyledToastCloseIcon src={closeIconsMap.get(closeIcon)} />;
+export const CloseIcon = ({ type, destroy }) => {
+  return <ToastCloseIcon src={closeIconsMap.get(type)} onClick={destroy} />;
 };
 
 CloseIcon.propTypes = {
-  closeIcon: oneOf(['white', 'black']),
+  type: oneOf(['white', 'black']),
 };

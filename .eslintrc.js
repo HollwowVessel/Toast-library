@@ -10,13 +10,14 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
     'plugin:storybook/recommended',
+    'plugin:prettier/recommended',
   ],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'simple-import-sort', 'import'],
   rules: {
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',

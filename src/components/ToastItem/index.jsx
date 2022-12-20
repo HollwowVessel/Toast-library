@@ -1,29 +1,20 @@
-import React, { useRef } from 'react';
-import { Toast } from 'components/Toast';
-import { StyledToastItemContainer } from './styled';
-import { colors, positionMap } from 'constants';
+import React, { forwardRef } from 'react';
 import { createPortal } from 'react-dom';
-import { animations } from 'helpers/animations';
 
-export const ToastItem = ({
-  type = 'warning',
-  color = 'yellow',
-  position = 'topLeft',
-  heading = '',
-  message = '',
-  inAnimation = 'appearanceAnimation',
-}) => {
-  const toastRef = useRef(null);
+import { Toast } from 'components/Toast';
+import { useToastService } from 'hooks/index';
+
+import { ToastItemContainer } from './styled';
+
+export const ToastWrapper = forwardRef((_, ref) => {
+  const { toasts, position } = useToastService(ref);
 
   return createPortal(
-    <StyledToastItemContainer
-      ref={toastRef}
-      color={colors[color]}
-      position={positionMap.get(position)}
-      animation={animations[inAnimation]}
-    >
-      <Toast type={type} heading={heading} message={message} />
-    </StyledToastItemContainer>,
+    <ToastItemContainer position={position}>
+      {toasts.map((toast) => (
+        <Toast key={toast.id} {...toast} />
+      ))}
+    </ToastItemContainer>,
     document.body,
   );
-};
+});

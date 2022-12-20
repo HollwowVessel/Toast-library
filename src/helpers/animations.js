@@ -1,69 +1,112 @@
-import { css, keyframes } from 'styled-components';
+import { keyframes } from 'styled-components';
 
-const appearance = keyframes`
-    0%{
-        opacity: 0;
+export const inAnimations = {
+  appearance: keyframes` 
+    0% {
+      opacity: 0;
+    } 
+    100% {
+      opacity: 1;
     }
-    100%{
-        opacity: 1;
+  `,
+  'left-slide-in': keyframes`
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
     }
-`;
-
-const leftSlide = keyframes`
-0%{
-    opacity: 0;
-    transform: translateX(100%);
-}
-100%{
-    opacity: 1;
-    transform: translateX(0%);
-}`;
-
-const rightSlide = keyframes`
-    0%{
-        opacity: 0;
-        transform: translateX(0%);
+    100% {
+      opacity: 1;
+      transform: translate(0%);
     }
-    100%{
-        opacity: 1;
-        transform: translateX(100%);
-    }`;
+  `,
+  'right-slide-in': keyframes`
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0%);
+    }
+  `,
+  'top-slide-in': keyframes`
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0%);
+    }
+  `,
+  'bottom-slide-in': keyframes`
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0%);
+    }
+  `,
+};
 
-const downSlide = keyframes`
-0%{
-    opacity: 0;
-    transform: translateY(100%);
-}
-100%{
-    opacity: 1;
-    transform: translateY(0%);
-}`;
+export const outAnimations = {
+  disappearance: keyframes` 
+    from {
+      opacity: 1;
+    } 
+    to {
+      opacity: 0;
+    }
+  `,
+  'left-slide-out': keyframes`
+    0% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-100%);
+    }
+  `,
+  'right-slide-out': keyframes`
+    0% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(100%);
+    }
+  `,
+  'top-slide-out': keyframes`
+    0% {
+      opacity: 1;
+      transform: translate(0%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  `,
+  'bottom-slide-out': keyframes`
+    0% {
+      opacity: 1;
+      transform: translate(0%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  `,
+};
 
-const topSlide = keyframes`
-        0%{
-            opacity: 0;
-            transform: translateY(0%);
-        }
-        100%{
-            opacity: 1;
-            transform: translateY(100%);
-        }
-    `;
-
-export const animations = {
-  appearanceAnimation: css`
-    animation: ${appearance} 3s;
-  `,
-  leftSlideAnimation: css`
-    animation: ${leftSlide} 3s;
-  `,
-  rightSlideAnimation: css`
-    animation: ${rightSlide} 3s;
-  `,
-  downSlideAnimation: css`
-    animation: ${downSlide} 3s;
-  `,
-  topSlideAnimation: css`
-    animation: ${topSlide} 3s;
-  `,
+export const determineAnimation = (animationName) => {
+  if (animationName) {
+    return animationName in inAnimations
+      ? inAnimations[animationName]
+      : outAnimations[animationName];
+  }
+  return 'none';
 };

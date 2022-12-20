@@ -1,20 +1,38 @@
 import React from 'react';
 
 import { ToastItem } from 'components/ToastItem';
-import { inAnimation } from 'helpers/animations';
+import { positionMap } from 'constants';
+import { ToastManager } from '../../services/singleton';
+import { Toast } from '.';
+import { ToastItemContainer } from '../ToastItem/styled';
 
 export default {
-  title: 'components',
+  title: 'components/Toasts',
   component: ToastItem,
+  argTypes: {
+    color: {
+      options: ['yellow', 'red', 'green', 'purple'],
+      control: { type: 'radio' },
+    },
+    type: {
+      options: ['warning', 'information', 'error', 'success'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 const heading = 'Basic Header';
 const message = 'Lorem ipsum dolor sit ';
-const position = 'topLeft';
+const duration = 0;
 
-const generalParams = { heading, message, position };
+const generalParams = { heading, message, duration };
+console.log(ToastManager.toasts);
 
-const Template = (args) => <ToastItem {...args} />;
+const Template = (args) => (
+  <ToastItemContainer position={positionMap['topLeft']}>
+    <Toast {...args} />
+  </ToastItemContainer>
+);
 
 export const Warning = Template.bind({});
 Warning.args = {

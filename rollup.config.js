@@ -33,6 +33,7 @@ export default [
         assets: `${__dirname}/src/assets`,
         helpers: `${__dirname}/src/helpers`,
         containers: `${__dirname}/src/containers`,
+        hooks: `${__dirname}/src/hooks`,
       }),
     ],
   },

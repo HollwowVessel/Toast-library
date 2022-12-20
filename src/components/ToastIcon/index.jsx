@@ -1,12 +1,12 @@
 import React from 'react';
 import { oneOf } from 'prop-types';
 import { iconsMap } from 'constants';
-import { string } from 'prop-types';
+import { ToastIconImage } from './styled';
 
-export const ToastIcon = ({ toastIcon }) => {
-  return <img src={iconsMap.get(toastIcon)} />;
+export const ToastIcon = ({ type }) => {
+  return <ToastIconImage src={iconsMap.get(type)} />;
 };
 
 ToastIcon.protTypes = {
-  toastIcon: oneOf(['warning', 'information', 'error', 'success']),
+  type: oneOf(['warning', 'information', 'error', 'success']),
 };

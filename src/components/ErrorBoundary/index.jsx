@@ -11,10 +11,10 @@ export class ErrorBoundary extends Component {
   }
 
   render() {
-    if (this.state.hasError) {
-      console.log('Something went wrong');
-      return null;
-    }
+    // if (this.state.hasError) {
+    //   console.log('Something went wrong');
+    //   return null;
+    // }
     return this.props.children;
   }
 }

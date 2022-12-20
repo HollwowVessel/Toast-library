@@ -24,12 +24,12 @@ export const closeIconsMap = new Map([
   ['black', blackCloseIcon],
 ]);
 
-export const positionMap = new Map([
-  ['bottomLeft', { top: 100, left: 0 }],
-  ['bottomRight', { top: 100, left: 100 }],
-  ['topLeft', { top: 0, left: 0 }],
-  ['topRight', { top: 0, left: 100 }],
-]);
+export const positionMap = {
+  bottomLeft: { top: 100, left: 0 },
+  bottomRight: { top: 100, left: 100 },
+  topLeft: { top: 0, left: 0 },
+  topRight: { top: 0, left: 100 },
+};
 
 export const spacesMap = new Map([
   ['none', { y: 0, x: 0 }],
