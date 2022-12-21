@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Toast } from 'components/Toast';
-import { useToastService } from 'hooks/index';
+import { Toast } from 'components/Toast/index.jsx';
+import { useToastService } from 'hooks/index.js';
 
 import { ToastItemContainer } from './styled';
 

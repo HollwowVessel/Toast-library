@@ -1,9 +1,9 @@
-import React, { memo, useState } from 'react';
+import React from 'react';
 
-import { useToastAnimation } from 'hooks';
+import { useToastAnimation } from 'hooks/index.js';
 
-import { CloseIcon } from 'components/CloseIcon';
-import { ToastIcon } from 'components/ToastIcon';
+import { CloseIcon } from 'components/CloseIcon/index.jsx';
+import { ToastIcon } from 'components/ToastIcon/index.jsx';
 
 import {
   ToastDescription,

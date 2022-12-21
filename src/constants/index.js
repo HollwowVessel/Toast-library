@@ -9,7 +9,7 @@ export const colors = {
   purple: '#9A40D3',
   yellow: '#F4E048',
   red: '#E25837',
-  green: '#37E29A',
+  green: '#37E30A',
 };
 
 export const iconsMap = new Map([

@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, useState } from 'react';
 
-import { ToastManager } from 'services/singleton';
+import { ToastManager } from './../services/singleton.js';
 
 export const useToastAnimation = ({
   inAnimationName,

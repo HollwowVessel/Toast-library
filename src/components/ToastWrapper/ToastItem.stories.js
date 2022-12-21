@@ -9,8 +9,8 @@ const heading = 'Basic heading';
 const message = 'Lorem ipsum...';
 
 const toasts = [
-  { id: '1', heading, message, color: 'yellow' },
-  { id: '2', heading, message, type: 'success', color: 'green' },
+  { id: '1', heading, message, color: 'purple' },
+  { id: '2', heading, message, type: 'success', color: 'yellow' },
   { id: '3', heading, message, type: 'information', color: 'purple' },
   { id: '4', heading, message, type: 'error', color: 'red' },
 ];
