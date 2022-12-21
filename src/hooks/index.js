@@ -79,7 +79,7 @@ export const useToastService = (ref) => {
     onToastRemove: handleToastRemove,
     onPositionChange: handlePosition,
   }));
-  console.log(toasts);
+
   return { toasts, position };
 };
 

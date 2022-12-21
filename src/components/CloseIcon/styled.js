@@ -5,6 +5,6 @@ export const ToastCloseIcon = styled.img`
   top: 27px;
   cursor: pointer;
   right: 29px;
-  width: 32px;
-  height: 32px;
+  width: ${({ theme }) => theme.width[0]}px;
+  height: ${({ theme }) => theme.width[0]}px;
 `;

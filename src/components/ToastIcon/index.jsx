@@ -7,6 +7,6 @@ export const ToastIcon = ({ type }) => {
   return <ToastIconImage src={iconsMap.get(type)} />;
 };
 
-ToastIcon.protTypes = {
+ToastIcon.propTypes = {
   type: oneOf(['warning', 'information', 'error', 'success']),
 };

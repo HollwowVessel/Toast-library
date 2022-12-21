@@ -11,7 +11,7 @@ export const Demo = () => {
   const [heading, setHeading] = useState('Basic header');
   const [message, setMessage] = useState('Lorem ipsum...');
   const [duration, setDuration] = useState(3000);
-  const [spaces, setSpaces] = useState('');
+
   const [color, setColor] = useState('yellow');
   const [closeIconColor, setCloseIconColor] = useState('white');
   const [animationTime, setAnimationTime] = useState(1000);
@@ -34,7 +34,6 @@ export const Demo = () => {
       inAnimationName: inAnimation,
       outAnimationName: outAnimation,
       animationTime: Number(animationTime),
-      spaces,
       color,
       closeIconColor,
     };
@@ -82,10 +81,6 @@ export const Demo = () => {
 
   const handleRadioOutAnimationChange = (event) => {
     setOutAnimation(event.target.value);
-  };
-
-  const handleSpaces = (event) => {
-    setSpaces(event.target.value);
   };
 
   return (
@@ -349,10 +344,6 @@ export const Demo = () => {
           type='number'
           step={1000}
         />
-      </fieldset>
-      <fieldset>
-        <legend>Spaces</legend>
-        <input value={spaces} onChange={handleSpaces} />
       </fieldset>
 
       <button type='submit'>Click me</button>

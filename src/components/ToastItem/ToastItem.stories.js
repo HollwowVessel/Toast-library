@@ -1,6 +1,9 @@
 import { Toast } from '../Toast';
 import { positionMap, colors } from 'constants';
 import { ToastItemContainer } from './styled';
+import { GlobalStyles } from 'helpers/GlobalStyles';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'helpers/theme';
 
 const heading = 'Basic heading';
 const message = 'Lorem ipsum...';
@@ -14,11 +17,14 @@ const toasts = [
 
 const ToastList = ({ position }) => {
   return (
-    <ToastItemContainer position={positionMap[position]}>
-      {toasts.map((toast) => (
-        <Toast key={toast.id} {...toast} />
-      ))}
-    </ToastItemContainer>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <ToastItemContainer position={positionMap[position]}>
+        {toasts.map((toast) => (
+          <Toast key={toast.id} {...toast} />
+        ))}
+      </ToastItemContainer>
+    </ThemeProvider>
   );
 };
 

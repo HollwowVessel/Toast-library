@@ -2,9 +2,12 @@ import React from 'react';
 
 import { ToastItem } from 'components/ToastItem';
 import { positionMap } from 'constants';
-import { ToastManager } from '../../services/singleton';
+import { ToastManager } from 'services/singleton';
 import { Toast } from '.';
 import { ToastItemContainer } from '../ToastItem/styled';
+import { GlobalStyles } from 'helpers/GlobalStyles';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'helpers/theme';
 
 export default {
   title: 'components/Toasts',
@@ -23,15 +26,16 @@ export default {
 
 const heading = 'Basic Header';
 const message = 'Lorem ipsum dolor sit ';
-const duration = 0;
 
-const generalParams = { heading, message, duration };
-console.log(ToastManager.toasts);
+const generalParams = { heading, message };
 
 const Template = (args) => (
-  <ToastItemContainer position={positionMap['topLeft']}>
-    <Toast {...args} />
-  </ToastItemContainer>
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <ToastItemContainer position={positionMap['topLeft']}>
+      <Toast {...args} />
+    </ToastItemContainer>
+  </ThemeProvider>
 );
 
 export const Warning = Template.bind({});

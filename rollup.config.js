@@ -26,7 +26,7 @@ export default [
       external(),
       resolve(),
       alias({
-        '@': `${__dirname}/src`,
+        src: `${__dirname}/src`,
         components: `${__dirname}/src/components`,
         stories: `${__dirname}/src/stories`,
         constants: `${__dirname}/src/constants`,

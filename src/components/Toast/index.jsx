@@ -5,7 +5,12 @@ import { useToastAnimation } from 'hooks';
 import { CloseIcon } from 'components/CloseIcon';
 import { ToastIcon } from 'components/ToastIcon';
 
-import { ToastDescription, ToastInfo } from './styled';
+import {
+  ToastDescription,
+  ToastHeading,
+  ToastInfo,
+  ToastMessage,
+} from './styled';
 
 export const Toast = ({
   type = 'warning',
@@ -38,8 +43,8 @@ export const Toast = ({
     >
       <ToastIcon type={type} />
       <ToastDescription position={message ? 'normal' : 'center'}>
-        <h1 type={type}>{heading}</h1>
-        {message && <p type={type}>{message}</p>}
+        <ToastHeading type={type}>{heading}</ToastHeading>
+        {message && <ToastMessage type={type}>{message}</ToastMessage>}
       </ToastDescription>
       <CloseIcon type={closeIconColor} destroy={deleteWithAnimation} />
     </ToastInfo>

@@ -8,14 +8,13 @@ export const ToastInfo = styled.div`
   text-align: left;
   display: flex;
   cursor: pointer;
-  height: 100%;
+  height: ${({ theme }) => theme.height[2]}%;
   background: ${({ background }) => background};
-  display: flex;
   box-shadow: 4px 4px 8px #00000029;
   position: relative;
   border-radius: 24px;
-  margin: 0 0 10px 0;
-  font-size: 32px;
+  margin: 0 0 ${({ theme }) => theme.spaces[1]}px 0;
+  font-size: ${({ theme }) => theme.fontSize[2]}px;
 
   animation: ${({ animationName }) => determineAnimation(animationName)}
     ${({ animationTime }) => {
@@ -24,21 +23,15 @@ export const ToastInfo = styled.div`
       }
       return 1000;
     }}ms;
+`;
 
-  h1,
-  p {
-    margin: 0;
-    padding: 0;
-  }
+export const ToastHeading = styled.h3`
+  font-size: ${({ theme }) => theme.fontSize[1]}px;
+  padding: 0 0 ${({ theme }) => theme.spaces[1]}px 0;
+`;
 
-  p {
-    font-size: 28px;
-    padding: 0 0 0 0;
-  }
-  h1 {
-    font-size: 32px;
-    padding: 0 0 10px 0;
-  }
+export const ToastMessage = styled.p`
+  font-size: ${({ theme }) => theme.fontSize[0]}px;
 `;
 
 export const ToastDescription = styled.div`

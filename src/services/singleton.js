@@ -1,14 +1,13 @@
 import { nanoid } from 'nanoid';
+import { positionMap } from '../constants';
 
 class ToastService {
   static instance;
   toasts = [];
 
-  toastQueue = [];
-
   position = 'bottomLeft';
 
-  containerRef = null;
+  toastRef = null;
 
   static getInstance() {
     if (!ToastService.instance) {
@@ -19,7 +18,7 @@ class ToastService {
   }
 
   init(ref) {
-    this.containerRef = ref;
+    this.toastRef = ref;
   }
 
   generateToast(options) {
@@ -34,35 +33,31 @@ class ToastService {
   }
 
   addToast(options) {
-    const newToast = this.generateToast(options);
-
-    if (this.toasts.length >= 3) {
-      this.toastQueue.push(newToast);
-    } else {
+    if (this.toasts.length < 3) {
+      const newToast = this.generateToast(options);
       this.toasts = [...this.toasts, newToast];
-      this.containerRef?.current?.onToastAdd(newToast);
+      this.toastRef?.current?.onToastAdd(newToast);
     }
   }
 
   setPosition(position) {
-    this.position = position;
-    this.containerRef?.current?.onPositionChange(position);
+    this.position = positionMap[position];
+    this.toastRef?.current?.onPositionChange(positionMap[position]);
   }
 
   removeToast(toastId) {
-    if (this.toasts.length > 3) {
+    if (this.toasts.length >= 3) {
       this.toasts = this.toasts.filter(({ id }) => id !== toastId);
-      const nextToast = this.toastQueue.shift();
 
       if (nextToast) {
         this.toasts = [...this.toasts, nextToast];
-        this.containerRef?.current?.onToastAdd(nextToast);
+        this.toastRef?.current?.onToastAdd(nextToast);
       }
     } else {
       this.toasts = this.toasts.filter(({ id }) => id !== toastId);
     }
 
-    this.containerRef?.current?.onToastRemove(toastId);
+    this.toastRef?.current?.onToastRemove(toastId);
   }
 }
 
