@@ -1,25 +1,24 @@
-import React, { useState } from 'react';
+import { ToastContainer } from "containers/ToastContainer";
+import { inAnimations, outAnimations } from "helpers/animations";
+import { useToast } from "hooks/index";
+import React, { useState } from "react";
+import { ToastManager } from "services/singleton";
 
-import { ToastManager } from 'services/singleton';
-import { ToastContainer } from 'containers/ToastContainer';
-import { inAnimations, outAnimations } from 'helpers/animations';
-import { useToast } from 'hooks/index';
+import { Form } from "./styled";
 
-import { Form } from './styled';
-
-export const Demo = () => {
-  const [heading, setHeading] = useState('Basic header');
-  const [message, setMessage] = useState('Lorem ipsum...');
+export function Demo() {
+  const [heading, setHeading] = useState("Basic header");
+  const [message, setMessage] = useState("Lorem ipsum...");
   const [duration, setDuration] = useState(3000);
 
-  const [color, setColor] = useState('yellow');
-  const [closeIconColor, setCloseIconColor] = useState('white');
+  const [color, setColor] = useState("yellow");
+  const [closeIconColor, setCloseIconColor] = useState("white");
   const [animationTime, setAnimationTime] = useState(1000);
 
-  const [type, setType] = useState('information');
-  const [position, setPosition] = useState('bottomLeft');
-  const [inAnimation, setInAnimation] = useState('appearance');
-  const [outAnimation, setOutAnimation] = useState('left-slide-out');
+  const [type, setType] = useState("information");
+  const [position, setPosition] = useState("bottomLeft");
+  const [inAnimation, setInAnimation] = useState("appearance");
+  const [outAnimation, setOutAnimation] = useState("left-slide-out");
 
   const { showInfoToast, showErrorToast, showSuccessToast, showWarningToast } =
     useToast();
@@ -39,18 +38,20 @@ export const Demo = () => {
     };
 
     switch (type) {
-      case 'information':
+      case "information":
         showInfoToast(options);
         break;
-      case 'warning':
+      case "warning":
         showWarningToast(options);
         break;
-      case 'success':
+      case "success":
         showSuccessToast(options);
         break;
-      case 'error':
+      case "error":
         showErrorToast(options);
         break;
+      default:
+        return null;
     }
   };
 
@@ -103,7 +104,7 @@ export const Demo = () => {
         <input
           value={duration}
           onChange={handleInputChange(setDuration)}
-          type='number'
+          type="number"
           step={1000}
         />
       </fieldset>
@@ -111,10 +112,10 @@ export const Demo = () => {
         <legend>Type</legend>
         <label>
           <input
-            type='radio'
-            name='type'
-            value='information'
-            checked={type === 'information'}
+            type="radio"
+            name="type"
+            value="information"
+            checked={type === "information"}
             onChange={handleRadioTypeChange}
           />
           Information
@@ -122,10 +123,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='type'
-            value='warning'
-            checked={type === 'warning'}
+            type="radio"
+            name="type"
+            value="warning"
+            checked={type === "warning"}
             onChange={handleRadioTypeChange}
           />
           Warning
@@ -133,10 +134,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='type'
-            value='error'
-            checked={type === 'error'}
+            type="radio"
+            name="type"
+            value="error"
+            checked={type === "error"}
             onChange={handleRadioTypeChange}
           />
           Error
@@ -144,10 +145,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='type'
-            value='success'
-            checked={type === 'success'}
+            type="radio"
+            name="type"
+            value="success"
+            checked={type === "success"}
             onChange={handleRadioTypeChange}
           />
           Success
@@ -157,10 +158,10 @@ export const Demo = () => {
         <legend>Color</legend>
         <label>
           <input
-            type='radio'
-            name='color'
-            value='yellow'
-            checked={color === 'yellow'}
+            type="radio"
+            name="color"
+            value="yellow"
+            checked={color === "yellow"}
             onChange={handleRadioColorChange}
           />
           Yellow
@@ -168,10 +169,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='color'
-            value='red'
-            checked={color === 'red'}
+            type="radio"
+            name="color"
+            value="red"
+            checked={color === "red"}
             onChange={handleRadioColorChange}
           />
           Red
@@ -179,10 +180,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='color'
-            value='green'
-            checked={color === 'green'}
+            type="radio"
+            name="color"
+            value="green"
+            checked={color === "green"}
             onChange={handleRadioColorChange}
           />
           Green
@@ -190,10 +191,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='color'
-            value='purple'
-            checked={color === 'purple'}
+            type="radio"
+            name="color"
+            value="purple"
+            checked={color === "purple"}
             onChange={handleRadioColorChange}
           />
           Purple
@@ -203,10 +204,10 @@ export const Demo = () => {
         <legend>Color of close icon</legend>
         <label>
           <input
-            type='radio'
-            name='closeIconColor'
-            value='black'
-            checked={closeIconColor === 'black'}
+            type="radio"
+            name="closeIconColor"
+            value="black"
+            checked={closeIconColor === "black"}
             onChange={handleRadioCloseIconColorChange}
           />
           Black
@@ -214,10 +215,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='closeIconColor'
-            value='white'
-            checked={closeIconColor === 'white'}
+            type="radio"
+            name="closeIconColor"
+            value="white"
+            checked={closeIconColor === "white"}
             onChange={handleRadioCloseIconColorChange}
           />
           White
@@ -227,10 +228,10 @@ export const Demo = () => {
         <legend>Position</legend>
         <label>
           <input
-            type='radio'
-            name='position'
-            value='topLeft'
-            checked={position === 'topLeft'}
+            type="radio"
+            name="position"
+            value="topLeft"
+            checked={position === "topLeft"}
             onChange={handleRadioPositionChange}
           />
           Top left
@@ -238,10 +239,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='position'
-            value='topRight'
-            checked={position === 'topRight'}
+            type="radio"
+            name="position"
+            value="topRight"
+            checked={position === "topRight"}
             onChange={handleRadioPositionChange}
           />
           Top right
@@ -249,10 +250,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='position'
-            value='bottomLeft'
-            checked={position === 'bottomLeft'}
+            type="radio"
+            name="position"
+            value="bottomLeft"
+            checked={position === "bottomLeft"}
             onChange={handleRadioPositionChange}
           />
           Bottom left
@@ -260,10 +261,10 @@ export const Demo = () => {
 
         <label>
           <input
-            type='radio'
-            name='position'
-            value='bottomRight'
-            checked={position === 'bottomRight'}
+            type="radio"
+            name="position"
+            value="bottomRight"
+            checked={position === "bottomRight"}
             onChange={handleRadioPositionChange}
           />
           Bottom right
@@ -274,8 +275,8 @@ export const Demo = () => {
         <legend>In animation</legend>
         <label>
           <input
-            type='radio'
-            name='inAnimation'
+            type="radio"
+            name="inAnimation"
             value={undefined}
             checked={!inAnimation}
             onChange={handleRadioInAnimationChange}
@@ -285,20 +286,20 @@ export const Demo = () => {
         {Object.keys(inAnimations).map((animationName) => (
           <label key={animationName}>
             <input
-              type='radio'
-              name='inAnimation'
+              type="radio"
+              name="inAnimation"
               value={animationName}
               checked={inAnimation === animationName}
               onChange={handleRadioInAnimationChange}
             />
             {animationName
-              .split('-')
+              .split("-")
               .map((word, idx) =>
                 idx === 0
                   ? word[0].toUpperCase() + word.toLowerCase().slice(1)
-                  : word.toLowerCase(),
+                  : word.toLowerCase()
               )
-              .join(' ')}
+              .join(" ")}
           </label>
         ))}
       </fieldset>
@@ -307,8 +308,8 @@ export const Demo = () => {
         <legend>Out animation</legend>
         <label>
           <input
-            type='radio'
-            name='outAnimation'
+            type="radio"
+            name="outAnimation"
             value={undefined}
             checked={!outAnimation}
             onChange={handleRadioOutAnimationChange}
@@ -318,20 +319,20 @@ export const Demo = () => {
         {Object.keys(outAnimations).map((animationName) => (
           <label key={animationName}>
             <input
-              type='radio'
-              name='outAnimation'
+              type="radio"
+              name="outAnimation"
               value={animationName}
               checked={outAnimation === animationName}
               onChange={handleRadioOutAnimationChange}
             />
             {animationName
-              .split('-')
+              .split("-")
               .map((word, idx) =>
                 idx === 0
                   ? word[0].toUpperCase() + word.toLowerCase().slice(1)
-                  : word.toLowerCase(),
+                  : word.toLowerCase()
               )
-              .join(' ')}
+              .join(" ")}
           </label>
         ))}
       </fieldset>
@@ -341,12 +342,12 @@ export const Demo = () => {
         <input
           value={animationTime}
           onChange={handleInputChange(setAnimationTime)}
-          type='number'
+          type="number"
           step={1000}
         />
       </fieldset>
 
-      <button type='submit'>Click me</button>
+      <button type="submit">Click me</button>
     </Form>
   );
-};
+}

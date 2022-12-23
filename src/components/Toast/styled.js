@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import { determineAnimation } from '../../helpers/animations';
+import styled from "styled-components";
+
+import { determineAnimation } from "../../helpers/animations";
 
 export const ToastInfo = styled.div`
   letter-spacing: 0px;

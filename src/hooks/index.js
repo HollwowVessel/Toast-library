@@ -1,21 +1,21 @@
-import { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { useEffect, useImperativeHandle, useRef, useState } from "react";
 
-import { ToastManager } from './../services/singleton.js';
+import { ToastManager } from "../services/singleton.js";
 
 export const useToastAnimation = ({
   inAnimationName,
   outAnimationName,
   animationTime,
   duration,
-  destroy,
+  remove,
 }) => {
   const [animation, setAnimation] = useState(inAnimationName);
 
   const animationRef = useRef(null);
-  const destroyRef = useRef(null);
+  const removeRef = useRef(null);
 
   useEffect(() => {
-    if (!duration || !destroy) return;
+    if (!duration || !remove) return;
 
     if (outAnimationName) {
       animationRef.current = setTimeout(() => {
@@ -23,33 +23,33 @@ export const useToastAnimation = ({
       }, duration - (animationTime || 1000));
     }
 
-    destroyRef.current = setTimeout(() => {
-      destroy();
+    removeRef.current = setTimeout(() => {
+      remove();
     }, duration);
 
     return () => {
       if (animationRef.current !== null) {
         clearTimeout(animationRef.current);
       }
-      if (destroyRef.current !== null) {
-        clearTimeout(destroyRef.current);
+      if (removeRef.current !== null) {
+        clearTimeout(removeRef.current);
       }
     };
-  }, [destroy, duration]);
+  }, [remove, duration]);
 
   const deleteWithAnimation = () => {
     if (animationRef.current) {
       clearTimeout(animationRef.current);
     }
-    if (destroyRef.current) {
-      clearTimeout(destroyRef.current);
+    if (removeRef.current) {
+      clearTimeout(removeRef.current);
     }
     if (!outAnimationName) {
-      destroy();
+      remove();
     }
 
     setAnimation(outAnimationName);
-    setTimeout(() => destroy(), (animationTime || 1000) - 100);
+    setTimeout(() => remove(), (animationTime || 1000) - 100);
   };
 
   return {
@@ -60,7 +60,7 @@ export const useToastAnimation = ({
 
 export const useToastService = (ref) => {
   const [toasts, setToasts] = useState([]);
-  const [position, setPosition] = useState('bottomLeft');
+  const [position, setPosition] = useState("bottomLeft");
 
   const handleToastAdd = (toast) => {
     setToasts((prevToasts) => [...prevToasts, toast]);
@@ -88,10 +88,15 @@ const showToast = (type) => (options) => {
 };
 
 export const useToast = () => {
-  const showInfoToast = showToast('information');
-  const showWarningToast = showToast('warning');
-  const showSuccessToast = showToast('success');
-  const showErrorToast = showToast('error');
+  const showInfoToast = showToast("information");
+  const showWarningToast = showToast("warning");
+  const showSuccessToast = showToast("success");
+  const showErrorToast = showToast("error");
 
-  return { showInfoToast, showWarningToast, showSuccessToast, showErrorToast };
+  return {
+    showInfoToast,
+    showWarningToast,
+    showSuccessToast,
+    showErrorToast,
+  };
 };

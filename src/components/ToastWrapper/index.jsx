@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
-import { createPortal } from 'react-dom';
-
 import { Toast } from 'components/Toast/index.jsx';
 import { useToastService } from 'hooks/index.js';
+import { any } from 'prop-types';
+import React, { forwardRef } from 'react';
+import { createPortal } from 'react-dom';
 
 import { ToastItemContainer } from './styled';
 
@@ -18,3 +18,8 @@ export const ToastWrapper = forwardRef((_, ref) => {
     document.body,
   );
 });
+
+ToastWrapper.propTypes = {
+  _: any,
+  ref: any,
+};

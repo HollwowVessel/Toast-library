@@ -1,8 +1,13 @@
-import React from 'react';
+import { iconsMap } from "constants/index.js";
+import { string } from "prop-types";
+import React from "react";
 
-import { iconsMap } from 'constants/index.js';
-import { ToastIconImage } from './styled';
+import { ToastIconImage } from "./styled";
 
-export const ToastIcon = ({ type }) => {
+export function ToastIcon({ type }) {
   return <ToastIconImage src={iconsMap.get(type)} />;
+}
+
+ToastIcon.propTypes = {
+  type: string,
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ToastIconImage = styled.img`
   width: ${({ theme }) => theme.width[1]}px;

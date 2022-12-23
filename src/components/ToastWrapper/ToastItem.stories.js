@@ -1,21 +1,45 @@
-import { Toast } from '../Toast';
-import { positionMap, colors } from 'constants';
-import { ToastItemContainer } from './styled';
-import { GlobalStyles } from 'helpers/GlobalStyles';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'helpers/theme';
+import { positionMap } from "constants";
+import { GlobalStyles } from "helpers/GlobalStyles";
+import { theme } from "helpers/theme";
+import { ThemeProvider } from "styled-components";
 
-const heading = 'Basic heading';
-const message = 'Lorem ipsum...';
+import { Toast } from "../Toast";
+import { ToastItemContainer } from "./styled";
+
+const heading = "Basic heading";
+const message = "Lorem ipsum...";
 
 const toasts = [
-  { id: '1', heading, message, color: 'purple' },
-  { id: '2', heading, message, type: 'success', color: 'yellow' },
-  { id: '3', heading, message, type: 'information', color: 'purple' },
-  { id: '4', heading, message, type: 'error', color: 'red' },
+  {
+    id: "1",
+    heading,
+    message,
+    color: "purple",
+  },
+  {
+    id: "2",
+    heading,
+    message,
+    type: "success",
+    color: "yellow",
+  },
+  {
+    id: "3",
+    heading,
+    message,
+    type: "information",
+    color: "purple",
+  },
+  {
+    id: "4",
+    heading,
+    message,
+    type: "error",
+    color: "red",
+  },
 ];
 
-const ToastList = ({ position }) => {
+function ToastList({ position }) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -26,36 +50,38 @@ const ToastList = ({ position }) => {
       </ToastItemContainer>
     </ThemeProvider>
   );
-};
+}
 
 export default {
-  title: 'components/Position',
+  title: "components/Position",
   component: ToastList,
   argTypes: {
     position: {
-      options: ['topRight', 'topLeft', 'bottomRight', 'bottomLeft'],
-      control: { type: 'radio' },
+      options: ["topRight", "topLeft", "bottomRight", "bottomLeft"],
+      control: { type: "radio" },
     },
   },
 };
-const Template = (args) => <ToastList {...args} />;
+function Template(args) {
+  return <ToastList {...args} />;
+}
 
 export const TopLeft = Template.bind({});
 TopLeft.args = {
-  position: 'topLeft',
+  position: "topLeft",
 };
 
 export const TopRight = Template.bind({});
 TopRight.args = {
-  position: 'topRight',
+  position: "topRight",
 };
 
 export const BottomLeft = Template.bind({});
 BottomLeft.args = {
-  position: 'bottomLeft',
+  position: "bottomLeft",
 };
 
 export const BottomRight = Template.bind({});
 BottomRight.args = {
-  position: 'bottomRight',
+  position: "bottomRight",
 };

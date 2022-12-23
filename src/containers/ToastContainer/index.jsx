@@ -1,12 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { ToastWrapper } from 'components/ToastWrapper/index.jsx';
+import { ToastWrapper } from "components/ToastWrapper/index.jsx";
+import { GlobalStyles } from "helpers/GlobalStyles.js";
+import { theme } from "helpers/theme.js";
+import React, { useEffect, useRef } from "react";
+import { ThemeProvider } from "styled-components";
 
-import { ToastManager } from './../../services/singleton.js';
-import { GlobalStyles } from 'helpers/GlobalStyles.js';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'helpers/theme.js';
+import { ToastManager } from "../../services/singleton.js";
 
-export const ToastContainer = () => {
+export function ToastContainer() {
   const toastRef = useRef(null);
 
   useEffect(() => {
@@ -21,4 +21,4 @@ export const ToastContainer = () => {
       <ToastWrapper ref={toastRef} />
     </ThemeProvider>
   );
-};
+}

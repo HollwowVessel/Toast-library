@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { Demo } from './index';
+import { Demo } from "./index";
 
 export default {
-  title: 'Example/Demo',
+  title: "Example/Demo",
   component: Demo,
 };
 
-const Template = () => <Demo />;
+function Template() {
+  return <Demo />;
+}
 
 export const Basic = Template.bind({});

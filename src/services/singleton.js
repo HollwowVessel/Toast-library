@@ -1,11 +1,13 @@
-import { nanoid } from 'nanoid';
-import { positionMap } from '../constants';
+import { nanoid } from "nanoid";
+
+import { positionMap } from "../constants";
 
 class ToastService {
   static instance;
+
   toasts = [];
 
-  position = 'bottomLeft';
+  position = "bottomLeft";
 
   toastRef = null;
 
@@ -23,11 +25,11 @@ class ToastService {
 
   generateToast(options) {
     const toastId = nanoid();
-    const destroy = () => this.removeToast(toastId);
+    const remove = () => this.removeToast(toastId);
 
     return {
       id: toastId,
-      destroy,
+      remove,
       ...options,
     };
   }
@@ -46,17 +48,7 @@ class ToastService {
   }
 
   removeToast(toastId) {
-    if (this.toasts.length >= 3) {
-      this.toasts = this.toasts.filter(({ id }) => id !== toastId);
-
-      if (nextToast) {
-        this.toasts = [...this.toasts, nextToast];
-        this.toastRef?.current?.onToastAdd(nextToast);
-      }
-    } else {
-      this.toasts = this.toasts.filter(({ id }) => id !== toastId);
-    }
-
+    this.toasts = this.toasts.filter(({ id }) => id !== toastId);
     this.toastRef?.current?.onToastRemove(toastId);
   }
 }
