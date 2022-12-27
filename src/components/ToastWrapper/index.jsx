@@ -1,10 +1,9 @@
 import { Toast } from "components/Toast/index.jsx";
 import { positionMap } from "constants";
+import { useToastService } from "hooks/useToastService";
 import { func, object, oneOfType, shape } from "prop-types";
 import { forwardRef } from "react";
 import { createPortal } from "react-dom";
-
-import { useToastService } from "  hooks/useToastService";
 
 import { ToastItemContainer } from "./styled";
 

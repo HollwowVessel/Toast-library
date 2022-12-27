@@ -7,7 +7,7 @@
     "name": "Hollow Vessel",
     "email": "mhollow782@gmail.com"
   },
-  "type": "module",
+  
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.20.5",
