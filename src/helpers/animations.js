@@ -1,52 +1,56 @@
+import {
+  bottomSlideHundred,
+  bottomSlideZero,
+  leftSlideHundred,
+  leftSlideZero,
+  opacityOne,
+  opacityZero,
+  rightSlideHundred,
+  rightSlideZero,
+  topSlideHundred,
+  topSlideZero,
+} from "constants/animations";
 import { keyframes } from "styled-components";
 
 export const inAnimations = {
   appearance: keyframes` 
     0% {
-      opacity: 0;
+      ${opacityZero};
     } 
     100% {
-      opacity: 1;
+      ${opacityOne};
     }
   `,
   "left-slide-in": keyframes`
     0% {
-      opacity: 0;
-      transform: translateX(100%);
+      ${leftSlideHundred}
     }
     100% {
-      opacity: 1;
-      transform: translate(0%);
+      ${leftSlideZero}
     }
   `,
   "right-slide-in": keyframes`
     0% {
-      opacity: 0;
-      transform: translateX(-100%);
+      ${rightSlideZero}
     }
     100% {
-      opacity: 1;
-      transform: translate(0%);
+      ${rightSlideHundred}
     }
   `,
   "top-slide-in": keyframes`
     0% {
-      opacity: 0;
-      transform: translateY(-100%);
+      ${topSlideZero}
     }
     100% {
-      opacity: 1;
-      transform: translate(0%);
+      ${topSlideHundred}
     }
   `,
   "bottom-slide-in": keyframes`
     0% {
-      opacity: 0;
-      transform: translateY(100%);
+      ${bottomSlideZero}
     }
     100% {
-      opacity: 1;
-      transform: translate(0%);
+      ${bottomSlideHundred}
     }
   `,
 };
@@ -54,50 +58,42 @@ export const inAnimations = {
 export const outAnimations = {
   disappearance: keyframes` 
     from {
-      opacity: 1;
+      ${opacityOne}
     } 
     to {
-      opacity: 0;
+      ${opacityZero}
     }
   `,
   "left-slide-out": keyframes`
     0% {
-      opacity: 1;
-      transform: translateX(0%);
+      ${rightSlideHundred}
     }
     100% {
-      opacity: 0;
-      transform: translate(-100%);
+      ${rightSlideZero}
     }
   `,
   "right-slide-out": keyframes`
     0% {
-      opacity: 1;
-      transform: translateX(0%);
+      ${leftSlideZero}
     }
     100% {
-      opacity: 0;
-      transform: translate(100%);
+      ${leftSlideHundred}
     }
   `,
   "top-slide-out": keyframes`
     0% {
-      opacity: 1;
-      transform: translate(0%);
+      ${bottomSlideHundred}
     }
     100% {
-      opacity: 0;
-      transform: translateY(-100%);
+      ${bottomSlideZero}
     }
   `,
   "bottom-slide-out": keyframes`
     0% {
-      opacity: 1;
-      transform: translate(0%);
+      ${topSlideHundred}
     }
     100% {
-      opacity: 0;
-      transform: translateY(100%);
+      ${topSlideZero}
     }
   `,
 };

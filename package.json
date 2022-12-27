@@ -1,12 +1,13 @@
 {
   "name": "toast-hollwowvessell-library",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "author": {
     "name": "Hollow Vessel",
     "email": "mhollow782@gmail.com"
   },
+  "type": "module",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.20.5",
@@ -42,19 +43,17 @@
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-storybook": "^0.6.4",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "rollup": "^3.7.4",
     "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-svg": "^2.0.0",
-    "styled-components": "^5.3.6"
+    "rollup-plugin-svg": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
   },
   "eslintConfig": {
     "extends": [

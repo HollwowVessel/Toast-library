@@ -1,25 +1,31 @@
-import { Toast } from 'components/Toast/index.jsx';
-import { useToastService } from 'hooks/index.js';
-import { any } from 'prop-types';
-import React, { forwardRef } from 'react';
-import { createPortal } from 'react-dom';
+import { Toast } from "components/Toast/index.jsx";
+import { positionMap } from "constants";
+import { func, object, oneOfType, shape } from "prop-types";
+import { forwardRef } from "react";
+import { createPortal } from "react-dom";
 
-import { ToastItemContainer } from './styled';
+import { useToastService } from "  hooks/useToastService";
+
+import { ToastItemContainer } from "./styled";
 
 export const ToastWrapper = forwardRef((_, ref) => {
   const { toasts, position } = useToastService(ref);
 
-  return createPortal(
-    <ToastItemContainer position={position}>
-      {toasts.map((toast) => (
-        <Toast key={toast.id} {...toast} />
-      ))}
-    </ToastItemContainer>,
-    document.body,
-  );
+  if (toasts.length) {
+    return createPortal(
+      <ToastItemContainer position={positionMap[position]}>
+        {toasts.map((toast) => (
+          <Toast key={toast.id} {...toast} />
+        ))}
+      </ToastItemContainer>,
+      document.body
+    );
+  }
+
+  return null;
 });
 
 ToastWrapper.propTypes = {
-  _: any,
-  ref: any,
+  _: func,
+  ref: oneOfType([func, shape({ current: object })]),
 };
