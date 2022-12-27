@@ -1,7 +1,5 @@
 import { nanoid } from "nanoid";
 
-import { positionMap } from "../constants";
-
 class ToastService {
   static instance;
 
@@ -43,8 +41,8 @@ class ToastService {
   }
 
   setPosition(position) {
-    this.position = positionMap[position];
-    this.toastRef?.current?.onPositionChange(positionMap[position]);
+    this.position = position;
+    this.toastRef?.current?.onPositionChange(position);
   }
 
   removeToast(toastId) {

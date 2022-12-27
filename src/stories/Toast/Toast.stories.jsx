@@ -1,12 +1,10 @@
+import { Toast } from "components/Toast";
 import { ToastWrapper } from "components/ToastWrapper";
+import { ToastItemContainer } from "components/ToastWrapper/styled";
 import { positionMap } from "constants";
 import { GlobalStyles } from "helpers/GlobalStyles";
 import { theme } from "helpers/theme";
-import React from "react";
 import { ThemeProvider } from "styled-components";
-
-import { ToastItemContainer } from "../ToastWrapper/styled";
-import { Toast } from ".";
 
 export default {
   title: "components/Toasts",

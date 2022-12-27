@@ -1,43 +1,10 @@
+import { Toast } from "components/Toast";
+import { ToastItemContainer } from "components/ToastWrapper/styled";
 import { positionMap } from "constants";
+import { toasts } from "constants/stories";
 import { GlobalStyles } from "helpers/GlobalStyles";
 import { theme } from "helpers/theme";
 import { ThemeProvider } from "styled-components";
-
-import { Toast } from "../Toast";
-import { ToastItemContainer } from "./styled";
-
-const heading = "Basic heading";
-const message = "Lorem ipsum...";
-
-const toasts = [
-  {
-    id: "1",
-    heading,
-    message,
-    color: "purple",
-  },
-  {
-    id: "2",
-    heading,
-    message,
-    type: "success",
-    color: "yellow",
-  },
-  {
-    id: "3",
-    heading,
-    message,
-    type: "information",
-    color: "purple",
-  },
-  {
-    id: "4",
-    heading,
-    message,
-    type: "error",
-    color: "red",
-  },
-];
 
 function ToastList({ position }) {
   return (
