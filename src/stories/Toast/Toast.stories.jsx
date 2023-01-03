@@ -4,18 +4,57 @@ import { ToastItemContainer } from "components/ToastWrapper/styled";
 import { positionMap } from "constants";
 import { GlobalStyles } from "helpers/GlobalStyles";
 import { theme } from "helpers/theme";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 
 export default {
   title: "components/Toasts",
   component: ToastWrapper,
   argTypes: {
-    color: {
-      options: ["yellow", "red", "green", "purple"],
-      control: { type: "radio" },
+    heading: {
+      name: "heading",
+      type: {name: "string", required: false},
+      defaultValue: "basic heading",
+      description: "Heading of the toast",
+      table: {
+        type: {summary: "string"},
+        defaultValue: {summary: "Heading of the toast"}
+      },
+      control: {type: 'text'},
+    },
+    message: {
+      name: "message",
+      type: {name: "string", required: false},
+      defaultValue: "Lorem ipsum...",
+      description: "Message of the toast",
+      table: {
+        type: {summary: "string"},
+        defaultValue: {summary: "Lorem ipsum..."}
+      },
+      control: {type: 'text'},
     },
     type: {
+      name: "type",
+      type: {name: "string", required: false},
+      defaultValue: "warning",
+      description: "Type of the toast",
+      table: {
+        type: {summary: "string"},
+        defaultValue: {summary: "warning"}
+      },
       options: ["warning", "information", "error", "success"],
+      control: { type: "radio" },
+    },
+    color: {
+      name: "color",
+      type: {name: "string", required: false},
+      defaultValue: "yellow",
+      description: "Color of the toast",
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: "yellow"}
+      },
+      options: ["yellow", "red", "green", "purple"],
       control: { type: "radio" },
     },
   },
@@ -30,7 +69,7 @@ function Template(args) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <ToastItemContainer position={positionMap.topLeft}>
+      <ToastItemContainer position={positionMap.topLeft} >
         <Toast {...args} />
       </ToastItemContainer>
     </ThemeProvider>

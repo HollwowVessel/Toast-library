@@ -24,6 +24,14 @@ export default {
   component: ToastList,
   argTypes: {
     position: {
+      name: "position",
+      type: {name: "string", required: false},
+      defaultValue: "topLeft",
+      description: "Position of the toast",
+      table: {
+        type: {summary: "string"},
+        defaultValue: {summary: "topLeft"}
+      },
       options: ["topRight", "topLeft", "bottomRight", "bottomLeft"],
       control: { type: "radio" },
     },

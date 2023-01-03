@@ -24,7 +24,7 @@ export const ToastWrapper = forwardRef((_, ref) => {
   return null;
 });
 
-ToastWrapper.propTypes = {
-  _: func,
-  ref: oneOfType([func, shape({ current: object })]),
-};
+// ToastWrapper.propTypes = {
+//   _: func,
+//   ref: oneOfType([func, shape({ current: object })]),
+// };
